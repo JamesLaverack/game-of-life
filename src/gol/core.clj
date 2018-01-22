@@ -34,7 +34,7 @@
 (def alive? true?)
 
 (defn step-cell
-  [[x y] cell neighbor-cells]
+  [cell neighbor-cells]
   (let [alive-neighbors (count (filter alive? neighbor-cells))]
     (if (alive? cell)
       (cond
@@ -45,7 +45,7 @@
 
 (defn step
   [world]
-  (matrix/emap-indexed (fn [loc cell] (step-cell loc cell (find-neighbors world loc))) world))
+  (matrix/emap-indexed (fn [loc cell] (step-cell cell (find-neighbors world loc))) world))
 
 (defn display [world] (clojure.string/join \newline (map clojure.string/join (matrix/emap #(if % "X" ".") world))))
 
