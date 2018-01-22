@@ -20,11 +20,16 @@
   [width height [x y]]
   (list (mod x width) (mod y height)))
 
+(defn get-cell
+  [world [x y]]
+  ;; Opposite way around
+  (matrix/mget world y x))
+
 (defn find-neighbors
   [world loc]
   (let [coords (map #(matrix/add loc %) relative-coords)
         wrapped-coords (map (partial wrap-coord (width world) (height world)) coords)]
-    (map (fn [[x y]] (matrix/mget world x y)) wrapped-coords)))
+    (map #(get-cell world %) wrapped-coords)))
 
 (def alive? true?)
 
