@@ -47,7 +47,7 @@
   [world]
   (matrix/emap-indexed (fn [loc cell] (step-cell cell (find-neighbors world loc))) world))
 
-(defn display [world] (clojure.string/join \newline (map clojure.string/join (matrix/emap #(if % "X" ".") world))))
+(defn display [world] (clojure.string/join \newline (map clojure.string/join (matrix/emap #(if % "█" ".") world))))
 
 (defn play-game
   [world iterations]
