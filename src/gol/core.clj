@@ -58,4 +58,4 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (play-game (randomise (seed 5 5)) 10))
+  (play-game (randomise (seed 20 10)) 10))
