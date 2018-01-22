@@ -4,7 +4,9 @@
 
 (defn seed
   [width height]
-  (matrix/new-matrix height width))
+  (matrix/fill (matrix/new-matrix height width) false))
+
+
 
 (defn -main
   "I don't do a whole lot ... yet."
