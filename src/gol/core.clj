@@ -18,7 +18,7 @@
 
 (defn wrap-coord
   [width height [x y]]
-  (list (mod x width) (mod y height)))
+  (list (mod y width) (mod x height)))
 
 (defn get-cell
   [world [x y]]
