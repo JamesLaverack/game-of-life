@@ -25,6 +25,16 @@
   ;; Opposite way around
   (matrix/mget world y x))
 
+(def glider [[false true false] [false false true] [true true true]])
+
+(defn apply-pattern [world pattern]
+  (matrix/emap-indexed
+   (fn [[y x] value]
+     (if (and (< x (width pattern)) (< y (height pattern)))
+       (get-cell pattern (list x y))
+       value))
+   world))
+
 (defn find-neighbors
   [world loc]
   (let [coords (map #(matrix/add loc %) relative-coords)
@@ -58,4 +68,4 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (play-game (randomise (seed 20 10)) 10))
+  (play-game (apply-pattern (seed 40 20) glider) 10))
