@@ -51,6 +51,7 @@
 
 (defn play-game
   [world iterations]
+  (println (str "==== Iteration " iterations " ===="))
   (println (display world))
   (if (> iterations 0) (recur (step world) (- iterations 1))))
 
