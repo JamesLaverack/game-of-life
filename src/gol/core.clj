@@ -1,5 +1,8 @@
 (ns gol.core
-  (:require [clojure.core.matrix :as matrix])
+  (:require
+    [clojure.core.matrix :as matrix]
+    [gol.pattern.glider]
+    [gol.pattern.glider-gun])
   (:gen-class))
 
 (defn seed
@@ -24,8 +27,6 @@
   [world [x y]]
   ;; Opposite way around
   (matrix/mget world y x))
-
-(def glider [[false true false] [false false true] [true true true]])
 
 (defn apply-pattern [world pattern]
   (matrix/emap-indexed
@@ -68,4 +69,5 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (play-game (apply-pattern (seed 40 20) glider) 10))
+  (play-game (apply-pattern (seed 40 20) gol.pattern/glider) 100)
+  (play-game (apply-pattern (seed 60 30) gol.pattern/glider-gun) 200))
